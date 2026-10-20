@@ -1,0 +1,233 @@
+const websitePackages = [
+  {
+    name: "START",
+    price: "$100",
+    description: "Oddiy bir sahifali sayt. Shaxsiy sahifa, xizmat reklamasi yoki kichik loyiha uchun.",
+    features: ["1 sahifa", "Responsive dizayn", "Aloqa tugmalari", "Minimal SEO"]
+  },
+  {
+    name: "STANDARD",
+    price: "$150",
+    description: "Zamonaviy landing page, xizmatlar bo‘limi va aloqa tugmalari.",
+    features: ["Landing page", "Xizmatlar bo‘limi", "Telegram CTA", "Mobil moslashuv"]
+  },
+  {
+    name: "BUSINESS",
+    price: "$200",
+    description: "Kichik biznes uchun bir nechta bo‘limdan iborat sayt.",
+    features: ["Ko‘p bo‘limli struktur", "Portfolio sahifasi", "Telegram bog‘lanish", "Premium tayyorgarlik"]
+  },
+  {
+    name: "PRO",
+    price: "$250",
+    description: "Kengaytirilgan dizayn, xizmat kartalari va qo‘shimcha bo‘limlar.",
+    features: ["Kengaytirilgan dizayn", "Karta uslubidagi xizmatlar", "FAQ", "SEO tayyorligi"]
+  },
+  {
+    name: "PREMIUM",
+    price: "$300",
+    description: "Premium dizayn, animatsiyalar va individual ko‘rinish.",
+    features: ["Premium dizayn", "Animatsiyalar", "Maxsus ranglar", "Kuchli brend ko‘rinishi"]
+  },
+  {
+    name: "SHOP",
+    price: "$350",
+    description: "Mahsulotlar katalogi, narxlar va buyurtma uchun interfeys.",
+    features: ["Mahsulot katalogi", "Narxlar bo‘limi", "Buyurtma CTA", "Katalog ko‘rinishi"]
+  },
+  {
+    name: "PRO BUSINESS",
+    price: "$400",
+    description: "Kengaytirilgan biznes sayti, portfolio va xizmatlar katalogi.",
+    features: ["Katta biznes uchun", "Portfolio + katalog", "Katta ma’lumotlar", "Ko‘proq sahifalar"]
+  },
+  {
+    name: "ELITE",
+    price: "$450",
+    description: "Individual dizayn, ko‘proq sahifalar va qo‘shimcha frontend imkoniyatlari.",
+    features: ["Individual modellash", "Ko‘p sahifali struktur", "Dizayn varianti", "Frontend qulayligi"]
+  },
+  {
+    name: "ULTIMATE",
+    price: "$480",
+    description: "Murakkabroq tuzilishga ega individual loyiha.",
+    features: ["Murakkab struktur", "Maxsus komponentlar", "Advanced UI", "Shaxsiy brend"]
+  },
+  {
+    name: "EXCLUSIVE",
+    price: "$500",
+    description: "Mijoz talabiga mos premium veb-sayt loyihasi.",
+    features: ["Premium individual loyiha", "Mijozga moslashgan dizayn", "Katta imkoniyatlar", "Tajribali yechim"]
+  }
+];
+
+const instagramPlans = [
+  { name: "1 000 ta obunachi", price: "35 000 so‘m", desc: "Obunachi paketlari." },
+  { name: "1 000 ta ko‘rish", price: "1 000 so‘m", desc: "Ko‘rishlar boosti." },
+  { name: "1 000 ta layk", price: "10 000 so‘m", desc: "Layklar boosti." }
+];
+
+const telegramPlans = [
+  { count: "1 000 ta obunachi", price: "15 000 so‘m" },
+  { count: "2 000 ta obunachi", price: "25 000 so‘m" },
+  { count: "4 000 ta obunachi", price: "50 000 so‘m" },
+  { count: "5 000 ta obunachi", price: "60 000 so‘m" },
+  { count: "10 000 ta obunachi", price: "100 000 so‘m" },
+  { count: "30 000 ta obunachi", price: "180 000 so‘m" },
+  { count: "50 000 ta obunachi", price: "300 000 so‘m" },
+  { count: "100 000 ta obunachi", price: "500 000 so‘m" },
+  { count: "200 000 ta obunachi", price: "1 000 000 so‘m" }
+];
+
+const pubgPlans = [
+  { uc: "60 UC", price: "13 000 so‘m" },
+  { uc: "120 UC", price: "28 000 so‘m" },
+  { uc: "180 UC", price: "42 000 so‘m" },
+  { uc: "325 UC", price: "66 000 so‘m" },
+  { uc: "385 UC", price: "79 000 so‘m" },
+  { uc: "660 UC", price: "125 000 so‘m" },
+  { uc: "985 UC", price: "190 000 so‘m" },
+  { uc: "1 320 UC", price: "250 000 so‘m" },
+  { uc: "1 800 UC", price: "330 000 so‘m" },
+  { uc: "2 125 UC", price: "395 000 so‘m" },
+  { uc: "3 850 UC", price: "595 000 so‘m" },
+  { uc: "8 100 UC", price: "1 280 000 so‘m" }
+];
+
+const metaPlans = [
+  { name: "Birinchi marta uchun", price: "15 000 so‘m" },
+  { name: "Oddiy shaxsiy akkaunt (Web)", price: "120 000 so‘m" },
+  { name: "Biznes Standard", price: "200 000 so‘m" },
+  { name: "Biznes Plus", price: "585 000 so‘m" },
+  { name: "Biznes Premium", price: "1 600 000 so‘m" },
+  { name: "Biznes Max", price: "4 500 000 so‘m" }
+];
+
+const renderWebsitePackages = () => {
+  const container = document.getElementById("pricingGrid");
+  if (!container) return;
+
+  container.innerHTML = websitePackages
+    .map(
+      (item) => `
+        <article class="price-card">
+          <div class="price-head">
+            <h3>${item.name}</h3>
+            <span class="price-tag">${item.price}</span>
+          </div>
+          <p>${item.description}</p>
+          <ul class="list">
+            ${item.features.map((feature) => `<li>${feature}</li>`).join("")}
+          </ul>
+          <button class="mini-btn" data-service="${item.name}" data-price="${item.price}" data-target="https://t.me/Nurbek_yandashov">Buyurtma berish</button>
+        </article>
+      `
+    )
+    .join("");
+};
+
+const renderTierCards = (selector, data, label, kind) => {
+  const container = document.querySelector(selector);
+  if (!container) return;
+
+  container.innerHTML = data
+    .map(
+      (item) => `
+        <article class="tier-card">
+          <div class="name">${item.name || item.count || item.uc}</div>
+          <div class="price">${item.price}</div>
+          <div class="meta">${item.desc || "Mavjudlik va yetkazib berish shartlari oldindan aniqlashtiriladi."}</div>
+          <button class="mini-btn" data-service="${item.name || item.count || item.uc}" data-price="${item.price}" data-target="https://t.me/Nurbek_yandashov">Buyurtma berish</button>
+        </article>
+      `
+    )
+    .join("");
+};
+
+const setupCopyButtons = () => {
+  document.querySelectorAll("[data-service]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const service = button.dataset.service;
+      const price = button.dataset.price;
+      const target = button.dataset.target || "https://t.me/Nurbek_yandashov";
+      const message = `Salom! Men ${service} xizmatini tanladim. Narxi: ${price}. Iltimos, ma’lumotlarni tasdiqlang.`;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(message).then(() => {
+          const originalText = button.textContent;
+          button.textContent = "Matn nusxalandi";
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 1200);
+        });
+      }
+
+      window.open(target, "_blank", "noopener,noreferrer");
+    });
+  });
+
+  const orderButton = document.querySelector(".order-button");
+  if (orderButton) {
+    orderButton.addEventListener("click", () => {
+      const msg = "Salom! Men buyurtma berishni xohlayman. Iltimos, xizmat va narxni tasdiqlang.";
+      if (navigator.clipboard) navigator.clipboard.writeText(msg);
+      window.open("https://t.me/Nurbek_yandashov", "_blank", "noopener,noreferrer");
+    });
+  }
+};
+
+const setupMobileMenu = () => {
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".nav");
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+};
+
+const setupScrollTop = () => {
+  const button = document.querySelector(".scroll-top");
+  if (!button) return;
+
+  const toggleButton = () => {
+    if (window.scrollY > 300) {
+      button.classList.add("visible");
+    } else {
+      button.classList.remove("visible");
+    }
+  };
+
+  window.addEventListener("scroll", toggleButton);
+  button.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+};
+
+renderWebsitePackages();
+renderTierCards("#instagramPackages", instagramPlans, "Instagram", "instagram");
+renderTierCards("#telegramPackages", telegramPlans, "Telegram", "telegram");
+renderTierCards("#pubgPackages", pubgPlans, "PUBG", "pubg");
+renderTierCards("#metaPackages", metaPlans, "Meta", "meta");
+setupCopyButtons();
+setupMobileMenu();
+setupScrollTop();
+
+const details = document.querySelectorAll("details");
+details.forEach((detail) => {
+  detail.addEventListener("toggle", () => {
+    if (detail.open) {
+      details.forEach((other) => {
+        if (other !== detail) other.removeAttribute("open");
+      });
+    }
+  });
+});
