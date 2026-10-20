@@ -1,1 +1,1 @@
-# Nurbek-purriq
+Ai n1
